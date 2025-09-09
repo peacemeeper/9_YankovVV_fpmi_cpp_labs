@@ -24,4 +24,4 @@ setlocale(LC_ALL, "Russian");
     }
     std::cout<<"Произведение нечетных чисел на промежутке [1;n] = " <<pr<<std::endl;
     return 0;
-}la
+}
