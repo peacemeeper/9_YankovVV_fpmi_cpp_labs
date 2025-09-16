@@ -26,28 +26,28 @@ int main(){
     if (n1<n2){
         number++;
     }
-    if(n2<n1 || n2<n3){
+    if(n2<n1 && n2<n3){
         number++;
     }
-    if(n3<n2 || n3<n4){
+    if(n3<n2 && n3<n4){
     number++;
     }
-    if(n4<n3 || n4<n5){
+    if(n4<n3 && n4<n5){
         number++;
     }
-    if(n5<n4 || n5<n6){
+    if(n5<n4 && n5<n6){
         number++;
     }
-    if(n6<n7 || n6<n5){
+    if(n6<n7 && n6<n5){
         number++;
     }
-    if(n7<n6 || n7<n8){
+    if(n7<n6 && n7<n8){
         number++;
     }
-    if(n8<n7 || n8<n9){
+    if(n8<n7 && n8<n9){
         number++;
     }
-    if(n9<n10 || n9<n8){
+    if(n9<n10 && n9<n8){
         number++;
     }
     if(n10<n9){
@@ -55,4 +55,5 @@ int main(){
     }
     std::cout<<"Количество чисел, которые меньше своих соседей = "<<number<<std::endl;
 	return 0;
+
 }
