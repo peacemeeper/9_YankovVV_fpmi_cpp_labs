@@ -9,7 +9,7 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <iostream>
 
 int main()
-{   int a,b,n,max,sum,numberOfNegativeNumbers;
+{   int a,n,max,sum;
     a=0;
     max = 0;
     sum = 0;
