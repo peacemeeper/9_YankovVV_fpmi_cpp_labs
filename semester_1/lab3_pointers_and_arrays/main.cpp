@@ -1,26 +1,23 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
 
 #include <iostream>
 
 int main()
-{   int a,n,max,sum;
+{   setlocale(LC_ALL, "Russian");
+    int a,b,n,max,sum,numberOfNegativeNumbers;
     a=0;
     max = 0;
     sum = 0;
     std::cout<<"Введите количество элементов в массиве (Натуральное число)"<<std::endl;
-    std::cin>>n;
+    if(!(std::cin>>n)){
+        std::cout<<"Введите корректное значение"<<std::endl;
+        return 0;
+    }
     int array[n];
     while (a < n) {
         std::cout<<"Введите "<< (a+1)<< " элемент массива"<<std::endl;
         std::cin>>array[a];
-        if ( array[a] > max ) {
-            max = a ;
+        if ( array[a]*array[a] > array[a-1]*array[a-1] ) {
+            max++;
         }
         a++;
     } 
@@ -41,6 +38,7 @@ int main()
             a++;
         }
     }
-    std::cout<<sum<<std::endl;
+    std::cout<<"Сумма элементов массива,расположенных после первого положительного числа = "<<sum<<std::endl;
+    std::cout<<"Номер максимального по модулю элемента массива = "<< max <<std::endl;
     return 0;
 }
