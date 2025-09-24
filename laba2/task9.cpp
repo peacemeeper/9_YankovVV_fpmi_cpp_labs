@@ -3,13 +3,14 @@
 
 int main()
 { 
+    setlocale(LC_ALL, "Russian");
     int a,b,l,a1,reversed,ost;
-    std::cout<<"Введите число a"<<std::endl;
+    std::cout<<"Введите целое натуральное число a, с которого начинается множество чисел"<<std::endl;
     if (!(std::cin>>a)){
     std::cout<<"Неверный симовл"<<std::endl;
     return 0;
     }
-    std::cout<<"Введите число b"<<std::endl;
+    std::cout<<"Введите целое натуральное число b, с которого начинается множество чисел"<<std::endl;
     if (!(std::cin>>b)){
     std::cout<<"Неверный символ"<<std::endl;
     return 0;
@@ -34,3 +35,4 @@ int main()
     }
     return 0;
 }
+
