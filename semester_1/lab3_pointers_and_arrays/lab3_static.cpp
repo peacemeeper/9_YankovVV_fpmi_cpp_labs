@@ -19,7 +19,10 @@ int main() {
     if (choose ==  1){
     while (a < n) {
         std::cout << "Введите " << (a + 1) << " элемент массива" << std::endl;
-        std::cin >> array[a];
+        if (!(std::cin >> array[a])) {
+        std::cout << "Введите корректное значение" << std::endl;
+        return 0;
+        }
         if (array[a] * array[a] > array[a - 1] * array[a - 1]) {
             max++;
         }
