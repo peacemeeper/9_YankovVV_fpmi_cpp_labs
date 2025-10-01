@@ -4,11 +4,12 @@
 
 int main()
 {
-    int a,a1,n,maxLength, length, firstNumber,lastNumber,choose;
+    int a,a1,n,maxLength, length,sum, firstNumber,lastNumber,choose;
     maxLength = 1;
     a1=0;
     a=0;
     length=1;
+    sum=0;
     std::cout<<"Введите количество элементов в массиве (Целое натуральное число)"<<std::endl;
     std::cin>>n;
     int *array = new int[n];
@@ -32,6 +33,22 @@ int main()
                     maxLength= length;
             }
             a++;
+    }
+   a=0;
+    while(array[a]!=0){
+        a++;
+    }
+    while(array[n]!=0){
+        n--;
+    }
+    if(a!=n){
+        while (a!=n){
+        sum+=array[a];
+        a++;
+    }
+    if(a=n){
+        std::cout<<"Массив содержит только один 0, так что сумма = "<<std::endl;
+    }
     }
     }
     if (choose ==  2){
@@ -67,12 +84,31 @@ int main()
             length++;
             }
                 if (length > maxLength ) {
-                    maxLength= length;
+                    maxLength = length;
             }
             a++;
     }
+    a=0;
+    while(array[a]!=0){
+        a++;
+    }
+    while(array[n]!=0){
+        n--;
+    }
+    if(a!=n){
+        while (a!=n){
+        sum+=array[a];
+        a++;
+    }
+    if(a=n){
+        std::cout<<"Массив содержит только один 0 "<<std::endl;
+    }
+    }
     }
     std::cout<<"Самая длинная цепочка подряд стоящих различных элементов:"<<maxLength<<std::endl;
+    std::cout<<sum<<std::endl;
+    std::cout<<n<<std::endl;
+    std::cout<<a<<std::endl;
     return 0;
-    }
+}
  
