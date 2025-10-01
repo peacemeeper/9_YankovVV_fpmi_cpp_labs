@@ -17,26 +17,20 @@ int main()
         a++;
     }
     a=0;
-    while (a < n){
-            a1=a+1;
-            length=1;
-                while ( a1 < n){
-                    if (array[a] != array[a1]){
-                        while ( array[a] != array[a1]){
-                    }
-                length++;
-                a1++;
-                if ( length > maxLength ) {
-                    maxLength= length;
-                }
-             }
-             next:
-             a++;
+    while (a <n ){
+        a1=a+1;
+        length=1;
+            while(array[a]!=array[a1] && a1<n){
+            a1++;
+            length++;
             }
+                if ( array[a]=array[a1] && length > maxLength ) {
+                    maxLength= length;
+            }
+            a++;
+    }
     std::cout<<maxLength<<std::endl;
     std::cout<<a<<std::endl;
     std::cout<<a1<<std::endl;
     return 0;
 }
-}
-
