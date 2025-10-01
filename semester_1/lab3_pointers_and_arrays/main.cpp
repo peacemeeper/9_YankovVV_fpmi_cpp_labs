@@ -38,7 +38,7 @@ int main()
     while(array[a]!=0){
         a++;
     }
-    while(array[n]!=0){
+    while(array[n-1]!=0){
         n--;
     }
     if(a!=n){
@@ -88,11 +88,11 @@ int main()
             }
             a++;
     }
-    a=0;
+     a=0;
     while(array[a]!=0){
         a++;
     }
-    while(array[n]!=0){
+    while(array[n-1]!=0){
         n--;
     }
     if(a!=n){
@@ -101,11 +101,10 @@ int main()
         a++;
     }
     if(a=n){
-        std::cout<<"Массив содержит только один 0 "<<std::endl;
+        std::cout<<"Массив содержит только один 0, так что сумма = "<<std::endl;
     }
     }
     }
-    std::cout<<"Самая длинная цепочка подряд стоящих различных элементов:"<<maxLength<<std::endl;
     std::cout<<sum<<std::endl;
     std::cout<<n<<std::endl;
     std::cout<<a<<std::endl;
