@@ -17,14 +17,11 @@ void numberOfSecondZero(int array[] , int& n) {
 void sumBetweenZeroes(int a , int n , int& sum , int array[]){
     while ( a < n ) {
         sum = sum + array[a];
+        a++;
     }
 }
 
 int bubleSort(int array[],int n) {
-  for (int i = 0; i < n; i++) {
-    std::cin >> array[i];
-  }
-
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < ( n-1 ); j++) {
       if (array[j] > array[j + 1]) {
@@ -63,12 +60,46 @@ int main() {
     for (int i = 0; i < n; i++) {
       std::cin >> array[i];
     }
-
+    bubleSort(array , n);
     numberOfFirsZero(array, a);
     numberOfSecondZero(array , n );
     sumBetweenZeroes(a , n , sum , array);
     delete[] array;
   }
-      std::cout<<sum;
+  if (choose == 2) {
+     int firstNumber,lastNumber;
+    std::cout<<"Введите целое число, с которого будет начинаться генерация рандомных чисел "<<std::endl;
+    if (!(std::cin >> firstNumber)) {
+        std::cout << "Введите корректное значение" << std::endl;
+        return 0;
+    }
+    std::cout<<"Введите целое число, которым будет заканчиваться генерация рандомных чисел "<<std::endl;
+    if (!(std::cin >> lastNumber)) {
+        std::cout << "Введите корректное значение" << std::endl;
+        return 0;
+    }
+    if ( firstNumber > lastNumber ){
+        std::cout<<"Число, с которого начинается генерация , должно быть больше , чем число , которым заканчивается генерация"<<std::endl;
+        return 0;
+    }
+    std::mt19937 gen(45218965);
+    std::uniform_int_distribution<int> dist(firstNumber,lastNumber);
+    std::cout<<"Элементы массива:"<<std::endl;
+    for ( int i = 0; i < n ; ++i){
+        array[i] = dist(gen);
+        std::cout<<array[i]<<" ";
+    }
+    std::cout<<std::endl;
+    
+    bubleSort(array , n);
+    numberOfFirsZero(array, a);
+    numberOfSecondZero(array , n );
+    sumBetweenZeroes(a , n , sum , array);
+    delete[] array;
+  }
+    for(int i = 0 ; i < n ; ++i){
+        std::cout<<array[i]<<std::endl;
+    }
+      std::cout<<"Сумма чисел между первым и последним нулями:"<<sum<<std::endl;
   return 0;
 }
