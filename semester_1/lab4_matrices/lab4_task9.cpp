@@ -1,23 +1,70 @@
 #include <iostream>
 
-int main()
-{
-    int n,m;
-    int array[10][10];
-    std::cout<<"Введите количество столбцов матрицы"<<std::endl;
-     std::cin>>n;
-     std::cout<<"Введите количество строк матрицы"<<std::endl;
-     std::cin>>m;
-     for ( int i = 0; i < m ; ++i ){
-        for ( int j = 0 ; j < n ; ++j){
-            std::cin>>array[i][j];
+
+
+int main() {
+    int columns, lines, zeroCount,columnsWithZero , maxLength , length , maxLine;
+    maxLength = 0;
+    zeroCount = 0;
+    columnsWithZero = 0;
+    std::cout << "Введите количество столбцов матрицы" << std::endl;
+    if(!(std::cin >> columns)){
+        std::cout<<"Введите корректное значение"<<std::endl;
+        return 0;
+    }
+    std::cout << "Введите количество строк матрицы" << std::endl;
+    if(!(std::cin >> lines)){
+        std::cout<<"Введите корректное значение"<<std::endl;
+        return 0;
+    }
+    std::cout<<"Введите матрицу"<<std::endl;
+    int array[lines][columns];
+    for (int i = 0; i < lines; ++i) {
+        for (int j = 0; j < columns; ++j) {
+            if(!(std::cin >> array[i][j])){
+                std::cout<<"Введите корректное значение"<<std::endl;
+                return 0;
+            }
         }
-     }
-     for ( i = 0; i < m ; ++i ){
-        for ( j = 0 ; j < n ; ++j){
-            std::cout<<array[i][j]<<"\t";
+    }
+    std::cout << "Матрица выглядит вот так:" << std::endl;
+    for (int i = 0; i < lines; ++i) {
+        for (int j = 0; j < columns; ++j) {
+            std::cout << array[i][j] << "\t";
         }
-        std::cout<<endl;
-     }
+        std::cout << std::endl;
+    }
+        for (int i = 0; i < columns; ++i) {
+        for (int j = 0; j < lines ; ++j) {
+            if (array[j][i] == 0) {
+                columnsWithZero++;
+                i++;
+            }
+            else if (j == lines ){
+                i++;
+            }
+    }
+}
+    for (int i = 0; i < lines ; ++i) {
+        if ( length > maxLength ) {
+            maxLine++;
+            maxLength = length;
+        }
+        length = 0;
+        for (int j = 0; j < columns ; ++j) {
+             if ( array[i][j] < array[i][j+1] ){
+                length++;
+            }
+            if ( array[i][j] >= array[i][j+1] ){
+                if( length > maxLength ) {
+                    maxLength = length;
+                    length = 0;
+            }
+        }
+}
+}
+
+    std::cout<<(columns-columnsWithZero)<<" столбцов не содержат 0" << std::endl;
+    std::cout<<"Бем бем бем "<< maxLine<<std::endl;
     return 0;
 }
