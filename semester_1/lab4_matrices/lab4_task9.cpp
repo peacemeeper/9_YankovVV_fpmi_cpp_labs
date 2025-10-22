@@ -3,9 +3,10 @@
 
 
 int main() {
-    int columns, lines, zeroCount,columnsWithZero , maxLength , length , maxLine;
-    maxLength = 0;
-    zeroCount = 0;
+    int columns, lines, zeroCount,columnsWithZero , maxLength , length , maxLine, beforeMaxLength;
+    maxLine=0;
+    maxLength = 1;
+    zeroCount = 1;
     columnsWithZero = 0;
     std::cout << "Введите количество столбцов матрицы" << std::endl;
     if(!(std::cin >> columns)){
@@ -45,20 +46,22 @@ int main() {
             }
     }
 }
-    for (int i = 0; i < lines ; ++i) {
-        if ( length > maxLength ) {
+    for (int i = 0; i <= lines ; ++i) {
+        if (maxLength > beforeMaxLength ) {
             maxLine++;
-            maxLength = length;
         }
-        length = 0;
+        beforeMaxLength=maxLength;
+        maxLength = 1;
+        length = 1;
         for (int j = 0; j < columns ; ++j) {
+            
              if ( array[i][j] < array[i][j+1] ){
                 length++;
             }
             if ( array[i][j] >= array[i][j+1] ){
                 if( length > maxLength ) {
                     maxLength = length;
-                    length = 0;
+                    length = 1;
             }
         }
 }
