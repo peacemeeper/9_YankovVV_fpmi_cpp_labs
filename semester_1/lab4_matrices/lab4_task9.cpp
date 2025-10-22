@@ -68,6 +68,6 @@ int main() {
 }
 
     std::cout<<(columns-columnsWithZero)<<" столбцов не содержат 0" << std::endl;
-    std::cout<<"Бем бем бем "<< maxLine<<std::endl;
+    std::cout<<"Номер строки с самой длиной строго возрастающей последовательностью"<< maxLine<<std::endl;
     return 0;
 }
