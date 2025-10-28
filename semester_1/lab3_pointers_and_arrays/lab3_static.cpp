@@ -110,7 +110,7 @@ void fillingArrayWithRandomDigits(double firstNumber, double lastNumber, int n, 
 
 int main() {
   setlocale(LC_ALL, "Russian");
-  int n, max, num, choose;
+  int n, max, choose;
   double sum;
   sum = 0;
   countOfDigitsInArray(n);
