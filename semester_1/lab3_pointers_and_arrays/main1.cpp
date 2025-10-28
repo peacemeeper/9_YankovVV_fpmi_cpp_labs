@@ -103,3 +103,33 @@ int main() {
       std::cout<<"Сумма чисел между первым и последним нулями:"<<sum<<std::endl;
   return 0;
 }
+
+// Online C++ compiler to run C++ program online
+/* #include <iostream>
+int main() {
+    int length = 1 , maxLength = 1, startIndex = 0, lastIndex = 0;
+    int array[10] = { 1 , 2 , 3 , 4 , 5 , 6 ,7 ,8 , 9 , 10 };  
+    for ( int i=0; i < 10 ; i++){
+        if( length > maxLength){
+            maxLength = length;
+            startIndex = i - 1;
+        }
+        length = 1;
+        for (int j = startIndex; j >= 0  ; j--){
+            if (array[i] != array[j]){
+                length++;
+            }
+            if(array[i] == array[j]){
+                lastIndex = j; 
+                j = -1;
+            }
+        }
+    }
+    for (int a = (lastIndex+1); a <= (startIndex+1); a++){
+        std::cout<<array[a]<<" ";
+    }
+    std::cout<<std::endl;
+    std::cout<<maxLength<<std::endl;
+    std::cout<<startIndex<<std::endl;
+    return 0;
+} */
