@@ -102,7 +102,7 @@ void inputingBordersForRandomNumbers(double& firstNumber, double& lastNumber) {
 
 void fillingArrayWithRandomDigits(double firstNumber, double lastNumber, int n, double array[]) {
   std::mt19937 gen(45218965);
-  std::uniform_int_distribution<int> dist(firstNumber, lastNumber);
+  std::uniform_int_distribution<double> dist(firstNumber, lastNumber);
   for (int i = 0; i < n; ++i) {
     array[i] = dist(gen);
   }
