@@ -45,13 +45,19 @@ void fillingArray(double array[], int n) {
 }
 
 void findingBiggestNumber(double array[], int n, int& max) {
+  int maxDigit = 0;
   max = 1;
   for (int i = 1; i < n; i++) {
-    if (array[i] > max) {
-      max = i + 1;
+    if (array[i] > maxDigit){
+        maxDigit = array[i];
+    }
+    }
+    int a = 0;
+    while (array[a] < maxDigit){
+        a++;
+        max++;
     }
   }
-}
 
 void sumOfDigitsAfterFirstDigitBiigerThenZero(double array[], int n, double& sum) {
   int a = 0;
