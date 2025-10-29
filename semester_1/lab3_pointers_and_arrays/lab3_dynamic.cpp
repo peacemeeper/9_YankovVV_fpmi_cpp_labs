@@ -40,23 +40,40 @@ void outputingArray(double * array, int n) {
   std::cout << std::endl;
 }
 
-void numberOfFirstZero(double * array , int& a) {
+void outputingChangedArray(double * array, int n) {
+  std::cout<<"Ваш отсортированный массив : ";
+  for (int i = 0; i < n; ++i) {
+    std::cout << array[i] << " ";
+  }
+  std::cout << std::endl;
+}
+
+void numberOfFirstZero(double * array , int a) {
      while (array[a] != 0) {
       a++;
     }
 }
 
-void numberOfLastZero(double * array , int& n) {
+void numberOfLastZero(double * array , int n) {
      while (array[n] != 0) {
       n--;
     }
 }
 
 void sumBetweenZeroes(int a , int n , double & sum , double * array){
+    while (array[a] != 0) {
+      a++;
+    }
+    while (array[n] != 0) {
+      n--;
+    }
     while ( a < n ) {
         sum = sum + array[a];
         a++;
     }
+}
+void cleaningSum(int& sum){
+    sum = 0;
 }
 void countOfDigitsInArray(int& n) {
   std::cout << "Введите количество элементов в массиве (Натуральное число)" << std::endl;
@@ -105,12 +122,15 @@ void fillingArrayWithRandomDigits(double firstNumber, double lastNumber, int n, 
     array[i] = dist(gen);
   }
 }
-void outputingSumBetweenZeros(double sum){
-    std::cout<<"Сумма чисел между первым и последним нулями: "<<sum<<std::endl;
+void outputingSumBetweenZerosInChangedArray(double sum){
+    std::cout<<"Сумма чисел между первым и последним нулями в отсортированном массиве: "<<sum<<std::endl;
+}
+void outputingSumBetweenZerosInStartArray(double sum){
+    std::cout<<"Сумма чисел между первым и последним нулями в вашем массиве: "<<sum<<std::endl;
 }
 
 int main() {
-  int a , n, choose;
+  int a , n , choose;
   a = 0;
   double sum = 0;
   countOfDigitsInArray(n);
@@ -118,8 +138,12 @@ int main() {
   makingChoose(choose);
   if (choose == 1) {
     fillingArray(array , n);
+    outputingArray(array , n);
+    sumBetweenZeroes(a , n , sum , array);
+    outputingSumBetweenZerosInStartArray(sum);
+    cleaningSum(sum);
     sortEvenAndOdd(n , array);
-    outputingArray(array, n);
+    outputingChangedArray(array, n);
     numberOfFirstZero(array, a);
     numberOfLastZero(array , n );
     sumBetweenZeroes(a , n , sum , array);
@@ -127,19 +151,20 @@ int main() {
   }
   if (choose == 2) {
      double firstNumber,lastNumber;
-inputingBordersForRandomNumbers( firstNumber,  lastNumber);
-    fillingArrayWithRandomDigits( firstNumber,  lastNumber,  n,  array);
+inputingBordersForRandomNumbers(firstNumber,  lastNumber);
+    fillingArrayWithRandomDigits(firstNumber,  lastNumber,  n,  array);
+    outputingArray(array , n);
+    sumBetweenZeroes(a , n , sum , array);
+    outputingSumBetweenZerosInStartArray(sum);
+    cleaningSum(sum);
     sortEvenAndOdd(n , array);
-    outputingArray(array,  n);
-    numberOfFirstZero(array, a);
-    numberOfLastZero(array , n );
+    outputingChangedArray(array,  n);
     sumBetweenZeroes(a , n , sum , array);
     delete[] array;
   }
   checkingChoose(choose);
   
-    outputingSumBetweenZeros( sum);
+    outputingSumBetweenZerosInChangedArray(sum);
       return 0;
     }
       
-
