@@ -59,7 +59,7 @@ void sumOfDigitsAfterFirstDigitBiigerThenZero(double array[], int n, double& sum
     a++;
   }
   while (a < n) {
-    sum = sum + array[a];
+    sum = sum + array[a+1];
     a++;
   }
 }
