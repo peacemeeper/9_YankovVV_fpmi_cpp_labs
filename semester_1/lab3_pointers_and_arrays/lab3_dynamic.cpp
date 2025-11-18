@@ -48,31 +48,28 @@ void outputingChangedArray(double * array, int n) {
   std::cout << std::endl;
 }
 
-void numberOfFirstZero(double * array , int a) {
-     while (array[a] != 0) {
-      a++;
-    }
-}
-
-void numberOfLastZero(double * array , int n) {
-     while (array[n] != 0) {
-      n--;
-    }
-}
-
 void sumBetweenZeroes(int a , int n , double & sum , double * array){
-    while (array[a] != 0) {
+    while (array[a] != 0 && a < n) {
       a++;
     }
-    while (array[n] != 0) {
+    while (array[n] != 0 && n > 0) {
       n--;
+    }
+    if ( a == n){
+        std::cout<<"В данном ряду только один ноль"<<std::endl;
+    }
+    if ( n == 0 && a!=0 ){
+        std::cout<<"В данном ряду нет нулей"<<std::endl;
+    }
+    if ( n == a+1 ){
+        std::cout<<"В ряду 2 нуля , но они стоят рядом"<<std::endl;
     }
     while ( a < n ) {
         sum = sum + array[a];
         a++;
     }
 }
-void cleaningSum(int& sum){
+void cleaningSum(double& sum){
     sum = 0;
 }
 void countOfDigitsInArray(int& n) {
@@ -144,8 +141,6 @@ int main() {
     cleaningSum(sum);
     sortEvenAndOdd(n , array);
     outputingChangedArray(array, n);
-    numberOfFirstZero(array, a);
-    numberOfLastZero(array , n );
     sumBetweenZeroes(a , n , sum , array);
     delete[] array;
   }
