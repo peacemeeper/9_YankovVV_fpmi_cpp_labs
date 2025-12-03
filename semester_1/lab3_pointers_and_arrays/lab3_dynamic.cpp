@@ -31,7 +31,7 @@ void findLongestUnique(const double* array, int n) {
         maxLength = n - start;
         end = n - 1;
     }
-    std::cout << "Цепочка: ";
+    std::cout << "Цепочка: "<<std::endl;
     for (int i = end - maxLength + 1; i <= end; i++) {
         std::cout << array[i] << " ";
     }
