@@ -1,6 +1,12 @@
 #include <iostream>
 #include <random>
 
+void checkingSize(int n ) {
+if ( n < 0 ){
+ std::cout<<"Количество элементов не может быть меньше 0"<<std::endl;
+ exit(0);
+ }
+}
 void checkingOnEmpty(int n){
  if ( n == 0 ) {
      std::cout<<"Массив пуст"<<std::endl;
