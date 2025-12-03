@@ -2,6 +2,12 @@
 #include <iostream>
 #include <random>
 
+void checkingOnEmpty(n){
+ if ( n == 0 ) {
+     std::cout<<"Массив пуст"<<std::endl;
+     exit(0);
+ }
+}
 void checkingChoose(int choose) {
     if (choose != 1 && choose != 2) {
         std::cout << "Для продолжения нужно ввести 1 либо 2" << std::endl;
