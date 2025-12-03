@@ -188,7 +188,7 @@ int main() {
 inputingBordersForRandomNumbers(firstNumber,  lastNumber);
     fillingArrayWithRandomDigits(firstNumber,  lastNumber,  n,  array);
     outputingArray(array , n);
-    findLOngestUnique(array,n);
+    findLongestUnique(array,n);
     sumBetweenZeroes(a , n , sum , array);
     outputingSumBetweenZerosInStartArray(sum);
     cleaningSum(sum);
