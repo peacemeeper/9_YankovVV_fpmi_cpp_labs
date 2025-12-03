@@ -2,7 +2,7 @@
 #include <iostream>
 #include <random>
 
-void checkingOnEmpty(n){
+void checkingOnEmpty(int n){
  if ( n == 0 ) {
      std::cout<<"Массив пуст"<<std::endl;
      exit(0);
