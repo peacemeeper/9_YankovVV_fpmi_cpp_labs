@@ -167,11 +167,14 @@ int main() {
   a = 0;
   double sum = 0;
   countOfDigitsInArray(n);
+  checkingOnEMpty(n);
+ 
   double * array = new double[n];
   makingChoose(choose);
   if (choose == 1) {
     fillingArray(array , n);
     outputingArray(array , n);
+    findLongestUnique(array , n);
     sumBetweenZeroes(a , n , sum , array);
     outputingSumBetweenZerosInStartArray(sum);
     cleaningSum(sum);
@@ -185,6 +188,7 @@ int main() {
 inputingBordersForRandomNumbers(firstNumber,  lastNumber);
     fillingArrayWithRandomDigits(firstNumber,  lastNumber,  n,  array);
     outputingArray(array , n);
+    findingLOngestUnique(array,n);
     sumBetweenZeroes(a , n , sum , array);
     outputingSumBetweenZerosInStartArray(sum);
     cleaningSum(sum);
