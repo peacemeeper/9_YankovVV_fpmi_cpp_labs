@@ -173,6 +173,7 @@ int main() {
   a = 0;
   double sum = 0;
   countOfDigitsInArray(n);
+  checkingSize(n);
   checkingOnEmpty(n);
  
   double * array = new double[n];
