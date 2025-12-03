@@ -185,7 +185,7 @@ int main() {
   }
   if (choose == 2) {
      double firstNumber,lastNumber;
-inputingBordersForRandomNumbers(firstNumber,  lastNumber);
+    inputingBordersForRandomNumbers(firstNumber,  lastNumber);
     fillingArrayWithRandomDigits(firstNumber,  lastNumber,  n,  array);
     outputingArray(array , n);
     findLongestUnique(array,n);
