@@ -1,6 +1,42 @@
 #include <iostream>
-
 #include <random>
+
+void checkingOnEmpty(n){
+ if ( n == 0 ) {
+     std::cout<<"Массив пуст"<<std::endl;
+     exit(0);
+ }
+}
+
+void findLongestUnique(const double* array, int n) {
+    
+    int start = 0;
+    int end = 0;  
+    int maxLength = 0;
+    
+    for (int i = 0; i < n; i++) {
+        for (int j = start; j < i; j++) {
+            if (array[j] == array[i]) {
+                if (i - start > maxLength) {
+                    maxLength = i - start;
+                    end = i - 1;
+                }
+                start = j + 1; 
+                break;
+            }
+        }
+    }
+    
+    if (n - start > maxLength) {
+        maxLength = n - start;
+        end = n - 1;
+    }
+    std::cout << "Цепочка: ";
+    for (int i = end - maxLength + 1; i <= end; i++) {
+        std::cout << array[i] << " ";
+    }
+}
+
 
 void checkingChoose(int choose) {
   if (choose != 1 && choose != 2) {
