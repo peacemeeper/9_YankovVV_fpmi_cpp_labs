@@ -2,6 +2,13 @@
 #include <iostream>
 #include <random>
 
+void checkingOnEnoughSpace(int n , int size){
+ if ( n > size ) {
+  std::cout<<"Количество эллеменетов не может быть больше константного значение"<<std::endl;
+  exit(0);
+ }
+}
+
 void checkingOnEmpty(int n){
  if ( n == 0 ) {
      std::cout<<"Массив пуст"<<std::endl;
@@ -24,8 +31,8 @@ void outputingArray(double array[], int n) {
     std::cout << std::endl;
 }
 
-void countOfDigitsInArray(int& n) {
-    std::cout << "Введите количество элементов в массиве (Натуральное число)" << std::endl;
+void countOfDigitsInArray(int& n , int size) {
+    std::cout << "Введите количество элементов в массиве (Натуральное число , " <<"max = " <<size<<")" <<std::endl;
     if (!(std::cin >> n)) {
         std::cout << "Введите коректное значение ( Натуральное число )" << std::endl;
         exit(0);
@@ -133,7 +140,9 @@ int main() {
     const int size = 1000;
     double sum = 0;
     double array[size];
-    countOfDigitsInArray(n);
+    countOfDigitsInArray(n , size);
+    checkingOnEmpty(n);
+    checkingOnEnoughSpace(n, size);
     makingChoose(choose);
     if (choose == 1) {
         fillingArray(array, n);
