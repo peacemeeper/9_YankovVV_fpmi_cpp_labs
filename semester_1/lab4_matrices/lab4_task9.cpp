@@ -76,6 +76,7 @@ void findingAmountOfColumnsWithZero(int columns, int lines, int& columnsWithZero
 
 void findingLongestMostGettingBiggerLine(int lines, int columns, int** array, int& maxLine) {
     int currentMaxLine = 0;
+    int beforeMaxLength = 0;
     int maxLength = 0;
 
     for (int i = 0; i < lines; ++i) {
