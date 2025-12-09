@@ -1,7 +1,24 @@
 #include <iostream>
 
+bool isPalindrome(int number) {
+    if (number < 10) {
+        return false;
+    }
+
+    int original = number;
+    int reversed = 0;
+
+    while (number > 0) {
+        int digit = number % 10;
+        reversed = reversed * 10 + digit;
+        number = number / 10;
+    }
+
+    return original == reversed;
+}
+
 int main() {
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL,"Russian");
     int a, b, l, a1, reversed, ost;
     std::cout << "Введите целое натуральное число a, с которого начинается множество чисел"<< std::endl;
     if (!(std::cin >> a)) {
@@ -16,20 +33,10 @@ int main() {
     if (a > b) {
         std::cout << "Число а должно быть больше числа b" << std::endl;
     }
-    while (a <= b) {
-        reversed = 0; // Перевернутое число
-        ost = 0;      // Остаток от деления на 10
-        a1 = a;       // Повторение числа а
-        while (a1 > 0) {
-            ost = a1 % 10;
-            a1 = a1 / 10;
-            reversed = reversed * 10 + ost;
-            if (reversed == a && reversed > 10) {
-                std::cout << a << std::endl;
+    for ( int i = a ; i <= b ;  ++i ) {
+            if(isPalindrome(i)){
+                    std::cout<<i<<std::endl;
             }
-        }
-        a++;
-    }
+
     return 0;
 }
-
