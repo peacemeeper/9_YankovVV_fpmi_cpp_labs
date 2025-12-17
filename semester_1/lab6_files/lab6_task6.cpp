@@ -86,6 +86,7 @@ void outputtingLinesWithBiggestUnderlines(std::vector<std::string>& linesWithBig
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     std::vector<std::string> linesWithBiggestUnderlines;
     std::string line;
     int lineCounter = 0;
