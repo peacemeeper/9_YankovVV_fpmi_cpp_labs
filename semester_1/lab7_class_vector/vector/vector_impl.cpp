@@ -1,5 +1,14 @@
 #include "vector_impl.h"
 
+    int& operator[](size_t index) {
+        return arr[index];
+    }
+
+         const int& operator[](size_t index) const {
+        return arr[index];
+    }
+
+
 	Vector() : size_(0), capacity_(0) {}
 
 
