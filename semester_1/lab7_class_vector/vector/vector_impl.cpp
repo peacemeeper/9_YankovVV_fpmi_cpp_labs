@@ -1,18 +1,18 @@
 #include "vector_impl.h"
 
-    int& operator[](size_t index) {
+    int& Vector::operator[](size_t index) {
         return arr[index];
     }
 
-         const int& operator[](size_t index) const {
+         const int& Vector::operator[](size_t index) const {
         return arr[index];
     }
 
 
-	Vector() : size_(0), capacity_(0) {}
+	Vector::Vector() : size_(0), capacity_(0) {}
 
 
-	Vector(size_t size) :size_(size), capacity_(size) {
+	Vector::Vector(size_t size) :size_(size), capacity_(size) {
 		arr = new int[capacity_];
 
 		for (size_t i = 0; i < size_; ++i) {
@@ -21,7 +21,7 @@
 	}
 
 	
-	Vector(std::initializer_list<int> list) : size_(list.size()) , capacity_(list.size()) {
+	Vector::Vector(std::initializer_list<int> list) : size_(list.size()) , capacity_(list.size()) {
 		arr = new int[capacity_];
 
 		size_t a = 0;
@@ -31,17 +31,33 @@
 		}
 	}
 
-	~Vector() {
+     Vector::Vector(const Vector& other): size_(other.size_), capacity_(other.capacity_), array_(new int[size_]){
+    std::copy(other.array_, other.array_ + size_, array_);
+}
+
+    Vector& Vector::operator= (const Vector& other){
+    if (this == &other)
+        return *this;
+
+    size_ = other.size_;
+    capacity_ = other.capacity_;
+    delete[] array_;
+    array_ = new int[size_];
+    std::copy(other.array_, other.array_ + size_, array_);
+    return *this;
+}
+
+	Vector::~Vector() {
 		delete[] arr;
  	}
 
-	void swap(Vector& another) {
+	void Vector::swap(Vector& another) {
 		std::swap(size_, another.size_);
 		std::swap(arr, another.arr);
 		std::swap(capacity_, another.capacity_);
 	}
 
-	int At(size_t index) {
+	int& Vector::At(size_t index) {
 		if (index >= size_) {
 			throw std::out_of_range("Индекс за границами вектора");
 		}
@@ -49,24 +65,24 @@
 	}
 
 
-	const int At(size_t index) const {
+	const int& Vector::At(size_t index) const {
 		if (index > size_) {
 			throw std::out_of_range("Индекс за границами вектора");
 		}
 		return arr[index];
 	}
 
-	size_t Size() const {
+	size_t Vector::Size() const {
 		return size_;
 	}
 
 
-	size_t Capacity() {
+	size_t Vector::Capacity() {
 		return capacity_;
 	}
 
 	
-	void  Reserve(size_t newCapacity_) {
+	void Vector::Reserve(size_t newCapacity_) {
 		if (newCapacity_ <= capacity_) {
 			return;
 		}
@@ -81,7 +97,7 @@
 	}
 
 
-	void PushBack(int value) {
+	void Vector::PushBack(int value) {
 		if (size_ == capacity_) {
 			size_t newCapacity_;
 			if (capacity_ == 0) {
@@ -93,14 +109,14 @@
 	}
 
 	
-	void PopBack() {
+	void Vector::PopBack() {
 		if (size_ > 0) {
 			size_--;
 		}
 	}
 
 
-	void Clear() {
+	void Vector::Clear() {
 		size_ = 0;
 	}
 
