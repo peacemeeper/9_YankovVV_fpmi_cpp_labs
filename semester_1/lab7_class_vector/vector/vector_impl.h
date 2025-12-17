@@ -12,6 +12,8 @@ const int& operator[](size_t index);
 Vector();
 Vector(size_t size);
 Vector(std::initializer_list<int> list);
+Vector(const Vector&);
+Vector& operator= (const Vector&);
 ~Vector();
 void swap(Vector& another);
 int At(size_t index);
@@ -24,4 +26,5 @@ void PopBack();
 void Clear();
 friend std::ostream& operator<<(std::ostream& output, const Vector& v);
 };
+
 
