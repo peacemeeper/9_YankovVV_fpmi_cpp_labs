@@ -19,8 +19,8 @@ public:
         using iterator_category = std::forward_iterator_tag;
         using difference_type = std::ptrdiff_t;
         using value_type = int32_t;
-        using pointer = value_type*;
-        using reference = value_type&;
+        using pointer = int32_t*;
+        using reference = int32_t&;
 
         explicit Iterator(ListNode* pos) : current(pos) {
         }
@@ -50,7 +50,7 @@ public:
             return current->data;
         }
 
-        pointer operator->() {
+        pointer operator->() const {
             return &current->data;
         }
 
@@ -74,28 +74,14 @@ public:
         return Iterator(nullptr);
     }
 
-    Iterator Begin() {
-        return begin();
-    }
-
-    Iterator End() {
-        return end();
-    }
-
-    Iterator Begin() const {
-        return begin();
-    }
-
-    Iterator End() const {
-        return end();
-    }
-
     ForwardList();
     ForwardList(const ForwardList& src);
     ForwardList(size_t n, int32_t val);
     ForwardList(std::initializer_list<int32_t> vals);
+    
     ForwardList& operator=(const ForwardList& src);
     ~ForwardList();
+    
     void PushFront(int32_t val);
     void PopFront();
     void Remove(int32_t val);
