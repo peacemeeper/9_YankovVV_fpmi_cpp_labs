@@ -1,138 +1,111 @@
-#include "forward_list_impl.h"
-#include <cstddef>
-#include <cstdint>
+#pragma once
+
 #include <iterator>
+#include <iostream>
 
-ForwardList::ForwardList() : first(nullptr), count(0) {
-}
+class ForwardList {
+private:
+    struct ListNode {
+        int32_t data;
+        ListNode* next;
 
-ForwardList::ForwardList(const ForwardList& src) : first(nullptr), count(0) {
-    ListNode* src_node = src.first;
-    ListNode* prev_node = nullptr;
-    while (src_node != nullptr) {
-        ListNode* new_node = new ListNode(src_node->data);
-        if (first == nullptr) {
-            first = new_node;
-        } else {
-            prev_node->next = new_node;
+        explicit ListNode(int val) : data(val), next(nullptr) {
         }
-        prev_node = new_node;
-        src_node = src_node->next;
-        ++count;
-    }
-}
+    };
 
-ForwardList::ForwardList(size_t n, int32_t val) : first(nullptr), count(0) {
-    for (size_t i = 0; i < n; ++i) {
-        PushFront(val);
-    }
-}
+public:
+    class Iterator {
+    public:
+        using iterator_category = std::forward_iterator_tag;
+        using difference_type = std::ptrdiff_t;
+        using value_type = int32_t;
+        using pointer = value_type*;
+        using reference = value_type&;
 
-ForwardList::ForwardList(std::initializer_list<int32_t> vals) : first(nullptr), count(0) {
-    for (auto it = std::rbegin(vals); it != std::rend(vals); ++it) {
-        PushFront(*it);
-    }
-}
-
-ForwardList& ForwardList::operator=(const ForwardList& src) {
-    if (this == &src) {
-        return *this;
-    }
-
-    Clear();
-
-    ListNode* src_node = src.first;
-    ListNode* prev_node = nullptr;
-    while (src_node != nullptr) {
-        ListNode* new_node = new ListNode(src_node->data);
-        if (first == nullptr) {
-            first = new_node;
-        } else {
-            prev_node->next = new_node;
+        explicit Iterator(ListNode* pos) : current(pos) {
         }
-        prev_node = new_node;
-        src_node = src_node->next;
-        ++count;
-    }
 
-    return *this;
-}
-
-ForwardList::~ForwardList() {
-    Clear();
-}
-
-void ForwardList::PushFront(int32_t val) {
-    ListNode* new_node = new ListNode(val);
-    new_node->next = first;
-    first = new_node;
-    ++count;
-}
-
-void ForwardList::PopFront() {
-    if (first == nullptr) {
-        return;
-    }
-
-    ListNode* old_node = first;
-    first = old_node->next;
-    delete old_node;
-    --count;
-}
-
-void ForwardList::Remove(int32_t val) {
-    ListNode* curr = first;
-    ListNode* prev = nullptr;
-
-    while (curr != nullptr) {
-        ListNode* next_node = curr->next;
-
-        if (curr->data == val) {
-            if (curr == first) {
-                first = next_node;
-            } else {
-                prev->next = next_node;
+        Iterator& operator++() {
+            if (current != nullptr) {
+                current = current->next;
             }
-            delete curr;
-            --count;
-        } else {
-            prev = curr;
+            return *this;
         }
-        curr = next_node;
-    }
-}
 
-void ForwardList::Clear() {
-    while (first != nullptr) {
-        PopFront();
-    }
-}
-
-bool ForwardList::Contains(int32_t val) {
-    for (Iterator it = begin(); it != end(); ++it) {
-        if (*it == val) {
-            return true;
+        Iterator operator++(int) {
+            Iterator temp = *this;
+            ++(*this);
+            return temp;
         }
-    }
-    return false;
-}
 
-void ForwardList::Display(std::ostream& os) {
-    for (Iterator it = begin(); it != end(); ++it) {
-        os << *it;
-        if (std::next(it) != end()) {
-            os << ' ';
+        bool operator==(const Iterator& rhs) const {
+            return current == rhs.current;
         }
-    }
-}
 
-int32_t ForwardList::GetFront() const {
-    if (first == nullptr) {
-        throw std::runtime_error("ForwardList is empty");
-    }
-    return first->data;
-}
+        bool operator!=(const Iterator& rhs) const {
+            return !(*this == rhs);
+        }
 
-size_t ForwardList::GetSize() const {
-    return count;
-}
+        reference operator*() const {
+            return current->data;
+        }
+
+        pointer operator->() {
+            return &current->data;
+        }
+
+    private:
+        ListNode* current;
+    };
+
+    Iterator begin() {
+        return Iterator(first);
+    }
+
+    Iterator end() {
+        return Iterator(nullptr);
+    }
+
+    Iterator begin() const {
+        return Iterator(first);
+    }
+
+    Iterator end() const {
+        return Iterator(nullptr);
+    }
+
+    Iterator Begin() {
+        return begin();
+    }
+
+    Iterator End() {
+        return end();
+    }
+
+    Iterator Begin() const {
+        return begin();
+    }
+
+    Iterator End() const {
+        return end();
+    }
+
+    ForwardList();
+    ForwardList(const ForwardList& src);
+    ForwardList(size_t n, int32_t val);
+    ForwardList(std::initializer_list<int32_t> vals);
+    ForwardList& operator=(const ForwardList& src);
+    ~ForwardList();
+    void PushFront(int32_t val);
+    void PopFront();
+    void Remove(int32_t val);
+    void Clear();
+    bool Contains(int32_t val);
+    void Display(std::ostream& os);
+    int32_t GetFront() const;
+    size_t GetSize() const;
+
+private:
+    ListNode* first;
+    size_t count;
+};
