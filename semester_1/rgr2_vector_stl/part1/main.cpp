@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 void inputVector(std::vector<int> &vector ) {
 	std::cout << "Вводите целые числа в промежутке от -2147483648 до 2147483647" << std::endl;
@@ -73,21 +74,23 @@ void givingInterval(int numberLastElement, int numberFirstElement) {
 	}
 }
 
-void findingMin(std::vector<int> vector , int &min) {
-	int min = vector[0];
+int findingMin(std::vector<int> vector , int &min) {
+	min = vector[0];
 	for (int i = 1; i < vector.size(); ++i) {
 		if (vector[i] < min) {
 			min = vector[i];
 		}
 	}
+	return min;
 }
-void findingMax(std::vector<int> vector , int &max) {
-	int max = vector[0];
+int findingMax(std::vector<int> vector , int &max) {
+	max = vector[0];
 	for (int i = 1; i < vector.size(); ++i) {
 		if (vector[i] > max) {
 			max = vector[i];
 		}
 	}
+	return max;
 }
 
 
@@ -112,8 +115,8 @@ void addingSumFromIntervalToEachElement(std::vector<int>& vector, int numberFirs
 }
 
 void changingModuledEven(std::vector<int> vector) {
-	int max;
-	int min;
+	int max = findingMax(vector,max);
+	int min = findingMin(vector, min);;
 	findingMax(vector, max);
 	findingMin(vector , min);
 	for (int i = 0; i < vector.size(); ++i) {
@@ -125,15 +128,17 @@ void changingModuledEven(std::vector<int> vector) {
 
 void deleteSameNumbers(std::vector<int> &vector) {
 	for (int i = 0; i < vector.size(); ++i) {
-		for (int j = i + 1; j < vector.size(); ++j) {
+		for (int j = i + 1; j < vector.size();) {
 			if (vector[j] == vector[i]) {
-				vector.pop_back(j);
+				vector.erase(vector.begin() + j);
 			}
+			else ++j;
 		}
 	}
 }
 
 int main() {
+	int min, min;
 	int numberFirstElement = 0;
 	int numberLastElement = 0;
 	int average = 0;
@@ -143,5 +148,6 @@ int main() {
 	outputVector(bem);
 	sizeOfVector(bem);
 	deleteSameNumbers(bem);
+	outputVector(bem);
 	return 0;
 }
