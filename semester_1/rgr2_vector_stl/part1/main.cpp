@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <limits>
 
 void inputVector(std::vector<int> &vector ) {
 	std::cout << "Вводите целые числа в промежутке от -2147483648 до 2147483647" << std::endl;
@@ -11,6 +12,8 @@ void inputVector(std::vector<int> &vector ) {
 	while (std::cin >> num) {
 		vector.push_back(num);
 	}
+	std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 void outputVector(std::vector<int> vector) {
