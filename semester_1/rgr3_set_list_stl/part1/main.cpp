@@ -39,6 +39,7 @@ int main() {
 	int N;
 	std::set<int> bem;
 	gettingDigit(N);
+	isNegative(N);
 	fillingContainer(N, bem);
 	std::cout << "Полученный контейнер" << std::endl;
 	outputingElements(bem);
