@@ -8,18 +8,21 @@ void isNegative(int n) {
 	}
 }
 
-void gettingDigit(int &n) {
+void gettingDigit(int& n) {
 	std::cout << "Введите натуральное число , до которого будет вестить поиск простых чисел решетом Эратосфена :";
-	std::cin >> n;
+	if (!(std::cin >> n)) {
+		std::cout << "Введите корректное значение" << std::endl;
+		exit(0);
+	}
 }
 
-void fillingContainer(int n, std::set<int> &set) {
+void fillingContainer(int n, std::set<int>& set) {
 	for (int i = 0; i <= n; ++i) {
 		set.insert(i);
 	}
 }
 
-void Eratosphen(std::set<int> &set ,int n) {
+void Eratosphen(std::set<int>& set, int n) {
 	for (int i = 2; i * i < n; ++i) {
 		for (int j = i * i; j < n; j += i) {
 			set.erase(j);
@@ -27,7 +30,7 @@ void Eratosphen(std::set<int> &set ,int n) {
 	}
 }
 
-void outputingElements(std::set<int> set){
+void outputingElements(std::set<int> set) {
 	for (auto& item : set) {
 		std::cout << item << " ";
 	}
